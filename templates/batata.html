@@ -1,0 +1,23 @@
+{% block main %}
+
+{% if total %}  
+
+    <h1>Total</h1>
+
+    {{ total }}
+
+    <button id="dieta" data-url="{{ url_for('dieta') }}">Gerar Dieta</button>
+
+    <script>
+        document.getElementById('dieta').addEventListener('click', function() {
+            window.location.href = this.getAttribute('data-url');
+        })
+    </script>
+
+{% else %}
+
+    <h1>Hello</h1>
+
+{% endif %}
+
+{% endblock %}

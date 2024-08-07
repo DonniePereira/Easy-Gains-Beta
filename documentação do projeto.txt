@@ -1,0 +1,250 @@
+Tá funciona assim: eu obtenho as informações no formulário
+
+- genero 
+- idade
+- altura
+- peso
+- nível de atividade física
+- superavit calórico
+
+Tudo será usado no cálculo direta ou indiretamente
+
+Função calc de calc.py (nota: refatorar)
+
+com tudo isso em mãos o que irá definir os números na fórmula será o gênero
+
+Optei por dividir quebrar a fórmula em partes para funcionar no código
+
+- São utilizadas 3 variáveis separadas para realizar as multiplicações da fórmula
+
+depois tudo é somado e por último subtraio pela idade, basicamente foi pura adaptação
+da fórmula para funcionar. 
+
+Tendo a TMB em mãos, com base no nível de atividade física da pessoa informado
+sendo sedentário, moderadamente ativo, ou bem ativo, será um cálculo diferente
+
+mas basicamente a TBM será multiplicada por um número que indica o nível de atividade
+física da pessoa, isso é baseado em uma média. 
+
+Por fim esse número passa por mais uma operação que é usado o superávit calórico
+escolhido pela pessoa, tendo duas opções 200 ou 500 calorias, isso é somado
+ao número e eu tenho quantas calorias essa pessoa precisa para ganhar massa muscular
+ou peso. Nota: (Isso é apenas baseado em médias, e para dar um auxílio inicial) 
+Para ter algo realmente preciso é necessário um exame de calorimetria indireta
+a pessoa vai em um nutricionista ou um lugar que realize o exame e tem sua taxa
+metabólica basal (TMB) , com auxílio do profissional ela irá calcular com outros meios
+o nível de atividade física e o objetivo de ganhos, por ex lento ou rápido, mas entra
+em conta diversos fatores que só uma avaliação profissional te daria algo exato mesmo. 
+A ideia é implementar uma ideia e vem de dar aquela pequena ajuda para pelo menos o 
+usuário começar a criar essa noção e introduzir ao assunto. E para pessoas que não 
+tem condições de pagar tudo para iniciar ao certinho tem pelo menos uma margem 
+de erro para se basear. 
+
+ -- PHEW... 
+
+Ok, então com o retorno da função, (o número total) a rota redireciona para a rota 
+dieta usando url_for para passar esse número total de calorias, obtendo o total 
+como argumento a função primeiro converte o valor para float que será usado em uma 
+divisão, essa decisão foi pensada para realizar a operação com precisão. 
+
+Aqui temos 5 resultados de funções armazenados em variáveis 
+vou explicar o funcionamento de apenas uma porque a mesma lógica se aplica 
+a todas. 
+
+a função breakfast foi criada para receber um argumento
+agora vamos para dentro dela, importando sqlite3 no arquivo em que ela está
+nós criamos uma conexão com o banco de dados da aplicação o app.db 
+depois criamos um cursor para realizar consultas em uma tabela desse banco
+
+aqui temos duas estruturas de dados, muito importantes nessa função, o dicionário
+e o array, ou lista como queiram chamar. 
+
+a lógica aqui é usar o cursor com o método, ou para ser mais claro com a função
+execute, ela é usada para executar consultas em um banco de dados de forma 
+programática. 
+
+a consulta seleciona os alimentos do array que estão na coluna alimento da tabela
+alimentos, eu sei aqui a repetição de nomes pode confundir. 
+
+Mas por ex: pense em uma tabela excel, essa tabela se chama alimentos, e eu tenho
+uma coluna que se chama alimento que conterá os nomes de todos os alimentos dessa
+tabela, então olhando no array
+
+alimentos = ['pao frances', 'leite integral', 'banana']
+
+onde eu tenho pao frances, leite integral e banana, a consulta irá procurar 
+esses 3 alimentos na coluna da tabela e me retornar a linha inteira de cada 
+um, assim alcançando meu objetivo que era obter os alimentos de café da manhã 
+e suas informações nutricionais. 
+
+
+Depois eu tenho um loop for que irá percorrer os resultados da consulta
+cada iteração o código irá usar o índice 0 da linha atual como chave, e o índice 
+1 em seguida será o valor, porque não valores se é em seguida? 
+Porque o valor é uma tupla. Então é uma caixa que tem várias coisas dentro, ou seja
+o valor caixa. Eu sei que você já deve estar cansado do exemplo da caixa mas releve
+
+Por ex: eu tenho a linha   
+
+pao frances | 50 | 137 | 25.95 | 4.4 | 1.5 
+
+pao frances será usado como chave então breakfast[row[0]] está dizendo use pao frances
+como chave do dicionário, depois   = row[1:] essa chave recebe o valor 50 em diante
+1: esse símbolo diz do índice 1 ao diante, então 1 = 50 , 2 = 137 ... 
+
+o resultado será algo como 
+
+breakfast{'pao frances': (50,137,25.95,4.4,1.5), 'leite integral': (100, 62, 4.66...) ..}
+
+certo aqui é uma parte mais personalizada, aqui entra a parte do número de refeições
+para uma pessoa que precisa de 2.500 calorias em média, considerando que ela 
+pretenda ser mais ativa, eu usei como base minhas características e meus objetivos
+aqui a divisão por 5 refeições entraria rotina, o quão ocupada a pessoa é, isso 
+entraria na decisão de por ex 3 refeições principais, e suplementação, algum shake
+rápido em horários definidos, snacks, enfim bastante coisa entra na questão para 
+tomar essa decisão, então na hora para dar prosseguimento ao projeto eu optei por
+usar o número de refeições que eu conseguiria encaixar na minha rotina hoje. 
+
+
+Aqui começam os cálculos
+com o resultado da divisão do quanto de calorias cada refeição tem que ter
+eu divido mais uma vez pelo número de alimentos da refeição então por exemplo se breakfast tem 3 alimentos será o número de calorias que essa refeição precisa dividio por 3. 
+
+mark 1 
+Aqui eu obtenho quantas calorias cada alimento tem, como a média
+da maioria é medida em 100 gramas então usando isso como base 
+pense que estou pegando quantas calorias tem em 100 gramas de cada alimento. 
+
+Isso é para aplicar uma regra de três
+
+Por ex: 
+
+Pão frances
+
+calorias do pao / calorias que cada alimento precisa ter para aquela refeição 
+
+Depois pegue o resultado dessa divisão e multiplique por 100
+
+Pronto agora você tem quantas gramas do alimento você precisa para atingir as calorias totais que aquele alimento precisa para atingir a sua parte da divisão do total de calorias da refeição.
+
+Por ex: 
+
+Se o tal de calorias que a pessoa precisa é: 2588.56 
+
+divido por 5 resulta em: 517.712 mais ou menos 
+
+dividindo esse valor por 3 alimentos eu tenho em média: 172.57 
+
+Então o cálculo é para saber quantas gramas do pão frances eu preciso para atingir 172.57 calorias, esse cálculo vale para também para os outros. 
+
+mark 2
+Certo agora eu crio um array, passando as gramas de cada alimento
+por último eu transfiro os valores para um dicionário e retorno
+
+Então é assim que são feitos os cálculos principais da aplicação.
+
+
+Aqui pode estar um pouco bagunçado talvez dê para refatorar, mas basicamente estou usando uma variável para cada valor do dicionário retornado da função, isso foi feito para criar outro dicionário onde irei passar todos esses valores junto com o valor do total de calorias para o template. 
+
+Então finalizando essa parte em cada div eu exibirei o número de gramas de cada alimento, junto com uma imagem previamente pensada
+isso foi a versão beta, então releve, era só para testar o funcionamento. 
+
+#Início das melhorias
+Bom pense comigo ninguém gosta de comer a mesma coisa, no mesmo
+horário todos os dias, então foi pensada a funcionalidade do botão de trocar o item, por enquanto ele está pensado para alterar apenas um alimento. 
+
+Aqui foi uma das partes mais legais depois de todo o rolo com a primeira tentativa de usar uma API para os dados de nutrição que ainda vou ver se é viável, por enquanto a ideia de fornecer exatamente o que eu tenho disponível de alimentos está melhor, mas enfim, aprendi a usar a API do Pexels, ou pelo menos sei os caminhos e pode-se dizer que é a primeira API que eu realmente consigo utilizar. 
+
+A lógica do script Js é adicionar um evento de clique em cada botão através de um loop for, depois ao clicar no botão chama uma função que pega o nome do id do botão, isso é pensado para mandar a requisição para a rota com base na refeição que o botão se localiza, para deixar mais nichado. 
+
+então é usado o fetch chamando a rota e passando o argumento, por ex: /chane_photo/jantar
+
+vamos até a rota para nos mantermos no raciocínio
+
+aqui eu tenho um if para cada nome de argumento, (também vou analisar se precisa de refatoração) então se o argumento for jantar a lista com alimentos de jantar que já não estejam nos itens gerados lá no template é criada. 
+
+depois eu uso a funcionalidade de erar números aleatórios nesse caso 2 números apenas, os números irão aumentar conforme mais alimentos são adicionados aos considerados "alimentos de jantar" certo aqui a API brilha, eu passo para a função obter fotos um alimento aleatório entre feijão e carne. 
+
+#O código da função API
+Aqui foi pura ajuda do ChatGpt e Gemini mas eu me diverti fazendo e entendendo.
+
+Primeiro eu me cadastrei na API do Pexels e obtive a key
+
+então em headers é criado o dicionário para autenticação usando a chave 
+
+depois a estrela da função que seria nossa querida query passada no argumento é armazenada
+
+depois usando a url de pesquisa da api, a pesquisa é passada na url, per_pae=5&page=1 acredito ser quantas imagens irão retornar que se for essa a interpretação correta seriam 5. 
+
+usando o requests.get de python  a requisição é feita junto com a autenticação, com a resposta sendo convertida para json. 
+
+aqui é criado um array para ser o retorno da função
+
+essa parte é importante porque a resposta da API é gigante 
+
+a lógica aqui é acessar a chave fotos, dentro dela a chave src e por último a chave original, isso vai me fornecer a url da imagem em si, então com as iterações do loop cada imagem é armazenada no array. 
+
+quando o loop termina o código usa a aleatorização para selecionar uma imagem do array, ou uma url de imagem do array como queria então retorna essa url na resposta da função. 
+
+então voltando ao retorno da rota onde a função foi chamada o código jsonifica a url isso é para dizer para o fetch do JavaScript ler isso como json. Então nosso querido JSON com a url é enviado de volta. 
+
+como o próprio código diz then ao obter o objeto response leia o objeto em forma de json, por isso o jsonify. 
+
+o retorno da função lambda ou de seta, na verdade é uma Promise que ainda tenho que ver exatamente o que é, então é como se response.json() fosse nomeado data, então a esse data obtenha o id img da mesma div que o botão pertence. 
+
+Basicamente é o seguinte eu estou na div da batata doce, eu fiz todo esse rebuliço para obter uma nova imagem, certo agora com a faca e o queijo na mão, o código vai até o src da imagem da batata doce, e troca pela url da imagem que veio lá do cafudé do judas da API. 
+
+Por enquanto só a imagem é alterada, preciso fazer a parte de alterar o nome do alimento e as gramas, isso vai requerer um pouco mais de cálculo e lógica eu acho, ou talvez eu só precise adaptar algo lá. 
+
+Phew... 
+
+-------------------------------------------------
+Bom notas até aqui:
+Css das imagens terá que ser repensado. 
+aliás, o css das divs inteiras talvez. 
+
+Gerar as imagens iniciais usando só a API talvez. 
+Algo que seja menos manual. 
+
+Refazer a parte de selecionar cada grama do dicionário retornado por cada função de refeição. 
+
+Talvez repensar o retorno das funções de refeição
+
+Ver se é melhor reduzir os ifs na rota change_photo 
+
+Reduzir a redundância do nível de atividade física em calc.py e dar aquela revisada básica 
+
+analisar o html estrutura das divs, e como será o novo esquema de css integrado 
+
+entender melhor as partes geradas pela IA 
+
+analisar db.py se tá tudo ok manter a função de criação da tabela
+
+revisada na inserção dos novos alimentos na tabela 
+
+Revisão no código, partes com gambiarra e difícil de entender talvez, se bem que com essas revisões já vou corrigir bastante coisa mas aquela bisoiada geral é sempre bom.
+
+Possíveis bugs, e ordem de lógica que pode ser melhorada. 
+
+Acho que a parte de problemas que eu tive que resolver, o que eu aprendi e tive que aprender eu irei organizar ao terminar essas tarefas. Da para ter uma ideia mais completa. 
+
+Ver se vale a pena manter o projeto sendo csv manual, é ok depois de criado porque cada alimento é só adicionar uma linha e rodar o código do db.py, mas aquela pensada básica se teria uma forma mais viável é sempre bem vinda. 
+
+começar a ver o requirements.txt.
+
+ver se irei criar um repositório no meu GitHub.
+
+Certo por enquanto é isso! 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+

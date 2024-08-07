@@ -1,0 +1,301 @@
+header
+{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+p
+{
+    font-size: 1.2em;
+    background-color: white;
+}
+
+#lanche-manha-paragraph
+{
+    font-size: 1.2em;
+    color: black;
+    background-color: white;
+    width: 100px;
+    margin-left: 204px;
+}
+
+#jantar-paragraph
+{
+    font-size: 1.2em;
+    color: black;
+    background-color: white;
+    width: 100px;
+    margin-left: 113px;
+}
+
+#paragraph
+{
+    font-size: 1.2em;
+    color: black;
+    background-color: white;
+    width: 100px;
+    margin-left: 119px;
+}
+
+.item3
+{
+    height: 368px;
+    width: 500px;
+   
+    display: block;
+  
+    margin-top: 91px;
+    margin-left: -147px;
+}
+
+.flex-container
+{
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: auto;
+    margin-top: 40px;
+    padding: 10px;
+    background-color: blue;
+    border-radius: 10px;
+    box-shadow: 3px 0px 10px black;
+    height: 463px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.lanche-manha
+{
+    display: flex;
+    text-align: center;
+    background-color: yellow;
+    width: 800px;
+    height: 463px;
+    margin: auto;
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 0px 10px black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.almoco
+{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: chartreuse;
+    width: 800px;
+    height: 850px;
+    margin: auto;
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 0px 10px black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.lanche-tarde
+{
+    display: flex;
+    text-align: center;
+    background-color: aquamarine;
+    width: 800px;
+    height: 463px;
+    margin: auto;
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 0px 10px black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#lanche-manha-h1
+{
+    color: black;
+}
+
+#lanche-tarde-h1
+{
+    color: black;
+    margin: 13px;
+}
+
+#almoco-h1
+{
+    color: black;
+    display: block;
+    text-align: center;
+    transform: translateX(178px);
+}
+
+h1{
+    color: white;
+    display: block;
+    text-align: center;
+    transform: translateX(50px);
+}
+
+.item
+{
+    height: 368px;
+    width: 500px;
+   
+    display: block;
+  
+    margin-top: 91px;
+    margin-left: -147px;
+}
+
+.lanche-manha-div
+{
+    height: 338px;
+    width: 500px;
+   
+    display: block;
+  
+    margin-top: 91px;
+    margin-left: 31px;
+}
+
+
+#ic
+{
+    height: 163px;
+    width: 206px;
+}
+
+#thick-skull
+{
+    height: 368px;
+    width: 500px;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 91px;
+    margin-left: -144px;
+}
+
+#zelda
+{
+    height: 368px;
+    width: 500px;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 91px;
+    margin-left: -144px;
+}
+
+#bob
+{
+    height: 368px;
+    width: 500px;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 91px;
+    margin-left: -144px;
+}
+
+#leite 
+{
+    height: 163px;
+}
+
+#pao_frances
+{
+    height: 163px;
+}
+
+#banana
+{
+    height: 163px;
+    width: 206px;
+}
+
+#ovo
+{
+    height: 163px;
+    width: 206px;
+}
+
+#macarrao
+{
+    height: 163px;
+    width: 206px;
+}
+
+#altura
+{
+    height: 163px;
+    width: 206px;
+}
+
+
+#carne-vaca
+{
+    height: 163px;
+    margin-top: 485px;
+    transform: translateX(-349px);
+}
+
+#batata-doce-almoco
+{
+    height: 163px;
+    margin-top: 487px;
+    transform: translateX(-176px);
+}
+
+#arroz
+{
+    margin-top: 95px;
+    height: 163px;
+    display: block;
+    transform: translate(60px);
+}
+
+.botoes
+{
+    margin-top: 11px;
+}
+
+.botoes-breakfast
+{
+    margin-top: 11px;
+    margin-left: -25px;
+}
+
+.botoes-jantar
+{
+    margin-top: 11px; 
+    margin-left: -1px;
+}
+
+#feijao
+{
+    margin-top: 95px;
+    height: 163px;
+    display: block;
+    transform: translate(233px);
+}
+
+
+#lanche-tarde-div
+{
+    height: 368px;
+    width: 500px;
+    
+    margin-top: 91px;
+    margin-left: -144px;
+    
+}
+
+#jantar-div
+{
+    height: 368px;
+    width: 500px;
+   
+    margin-top: 91px;
+    margin-left: -97px;
+}

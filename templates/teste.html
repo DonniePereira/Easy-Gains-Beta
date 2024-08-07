@@ -1,0 +1,42 @@
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    <form method="post" action="/form">
+        <label for="genero">Gênero</label>
+        <select id="genero" name="genero">
+            <option disabled selected>Selecione</option>
+            <option value="masculino">masculino</option>
+            <option value="feminino">feminino</option>
+        </select>
+
+        <label for="idade">Idade:</label>
+        <input id="idade" name="idade" type="number">
+
+        <label for="altura">Altura:</label>
+        <input id="altura" name="altura" type="number">
+
+        <label for="peso">Peso:</label>
+        <input id="peso" name="peso" type="number">
+        
+        <label for="naf">Nível de atividade física:</label>
+        <select id="naf" name="naf">
+            <option disabled selected>Selecione</option>
+            <option value="sedentario">Sedentário</option>
+            <option value="moderadamente">Moderadamente Ativo</option>
+            <option value="muito_ativo">Muito Ativo</option>
+        </select>
+
+        <label for="supravit">Escolha seu superávit</label>
+        <select name="superavit" id="superavit">
+            <option disabled selected>Selecione</option>
+            <option value="200">200cal</option>
+            <option value="500">500cal</option>
+        </select>
+
+        <button id="submit1" name="submit1" type="submit">Enviar</button>
+    </form>
+
+{% endblock %}
