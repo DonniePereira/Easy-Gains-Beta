@@ -2,7 +2,7 @@ import requests
 import random
 
 def get_photos(query):
-    api_key = 'SNdbZYcePk7TjGrXpC3e9BQsrzxe4fHUpP4B2e2wLvGaXPYdS2K3iiaz'
+    api_key = '...'
     headers = {'Authorization': api_key}
     search_query = query
     url = f'https://api.pexels.com/v1/search?query={search_query}&per_page=10&page=1'
