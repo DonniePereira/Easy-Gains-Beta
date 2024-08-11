@@ -23,7 +23,7 @@ da fórmula para funcionar.
 Tendo a TMB em mãos, com base no nível de atividade física da pessoa informado
 sendo sedentário, moderadamente ativo, ou bem ativo, será um cálculo diferente
 
-mas basicamente a TBM será multiplicada por um número que indica o nível de atividade
+mas basicamente a TMB será multiplicada por um número que indica o nível de atividade
 física da pessoa, isso é baseado em uma média. 
 
 Por fim esse número passa por mais uma operação que é usado o superávit calórico
