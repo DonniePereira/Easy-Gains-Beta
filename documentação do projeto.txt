@@ -23,8 +23,8 @@ da fórmula para funcionar.
 Tendo a TMB em mãos, com base no nível de atividade física da pessoa informado
 sendo sedentário, moderadamente ativo, ou bem ativo, será um cálculo diferente
 
-mas basicamente a TMB será multiplicada por um número que indica o nível de atividade
-física da pessoa, isso é baseado em uma média. 
+mas basicamente a TMB (Taxa Metabólica Basal) será multiplicada por um número
+que indica o nível de atividade física da pessoa, isso é baseado em uma média. 
 
 Por fim esse número passa por mais uma operação que é usado o superávit calórico
 escolhido pela pessoa, tendo duas opções 200 ou 500 calorias, isso é somado
@@ -36,9 +36,8 @@ metabólica basal (TMB) , com auxílio do profissional ela irá calcular com out
 o nível de atividade física e o objetivo de ganhos, por ex lento ou rápido, mas entra
 em conta diversos fatores que só uma avaliação profissional te daria algo exato mesmo. 
 A ideia é implementar uma ideia e vem de dar aquela pequena ajuda para pelo menos o 
-usuário começar a criar essa noção e introduzir ao assunto. E para pessoas que não 
-tem condições de pagar tudo para iniciar ao certinho tem pelo menos uma margem 
-de erro para se basear. 
+usuário começar a criar essa noção e se introduzir ao assunto. E para pessoas que não 
+tem condições de pagar tudo para iniciar, tem pelo menos uma margem de erro para se basear. 
 
  -- PHEW... 
 
