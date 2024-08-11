@@ -11,21 +11,27 @@
         <img id="ic" src="../static/imagens/pao-frances.jpeg" alt="pão frances">
         <h2>Pão Frances</h2>
         <p id="paragraph">Gramas</p>
-        <p id="paragraph">{{ pao_frances }}</p>
+       
+            <p id="paragraph">{{ lista_de_dicionarios[0]['breakfast pao frances']}}</p>
+     
         <button class="botoes-breakfast">Gerar outro item</button>
     </div>
     <div class="item">
         <img id="ic" src="../static/imagens/leite-integral.jpeg" alt="leite integral">
         <h2>Leite Integral</h2>
         <p id="paragraph">Gramas</p>
-        <p id="paragraph">{{ leite_integral }}</p>
+
+        <p id="paragraph">{{ lista_de_dicionarios[0]['breakfast leite integral']}}</p>
+        
         <button class="botoes-breakfast">Gerar outro item</button>
     </div>
     <div class="item">
         <img id="ic" src="../static/imagens/banana.jpeg" alt="banana">
         <h2>Banana</h2>
-        <p id="paragraph">Gramas</p>
-        <p id="paragraph">{{ banana }}</p>
+        <p id="gambiarra-gameplays">Gramas</p> <!-- id="paragraph" -->
+
+        <p id="paragraph">{{ lista_de_dicionarios[0]['breakfast banana']}}</p>
+        
         <button class="botoes-breakfast" id="breakfast">Gerar outro item</button>
     </div>
 </breakfast>
@@ -36,7 +42,9 @@
         <img id="ic" src="../static/imagens/amendoa.jpeg" alt="amendoas">
         <h2>Amêndoas</h2>
         <p id="lanche-manha-paragraph">Gramas</p>
-        <p id="lanche-manha-paragraph">{{ amendoas }}</p>
+
+        <p id="paragraph">{{ lista_de_dicionarios[1]['lanche manha amendoas']}}</p>
+        
         <button  class="botoes" id="lanche-manha">Gerar outro item</button>
     </div>
 </lanche_manha>
@@ -47,28 +55,36 @@
         <img  id="ic" src="../static/imagens/arroz-branco.jpg" alt="arroz branco">
         <h2>Arroz Branco</h2>
         <p>Gramas</p>
-        <p>{{ arroz_branco }}</p>
+
+        <p id="paragraph">{{ lista_de_dicionarios[2]['almoco arroz branco']}}</p>
+        
         <button class="botoes" id="almoco">Gerar outro item</button>
     </div>
     <div id="feijao">
         <img id="ic" src="../static/imagens/feijao-carioca.jpeg" alt="feijao carioca">
         <h2>Feijão Carioca</h2>
         <p>Gramas</p>
-        <p>{{ feijao_carioca }}</p>
+
+        <p id="paragraph">{{ lista_de_dicionarios[2]['almoco feijao carioca']}}</p>
+        
         <button class="botoes" id="almoco">Gerar outro item</button>
     </div>
     <div id="carne-vaca">
         <img id="ic" src="../static/imagens/carne-de-vaca.jpg" alt="carne de vaca">
         <h2>Carne de vaca</h2>
         <p>Gramas</p>
-        <p>{{ carne_vaca }}</p>
+
+        <p id="paragraph">{{ lista_de_dicionarios[2]['almoco carne de vaca']}}</p>
+        
         <button class="botoes" id="almoco">Gerar outro item</button>
     </div>
     <div id="batata-doce-almoco">
         <img id="ic" src="../static/imagens/batata-doce.jpeg" alt="batata doce">
         <h2>Batata Doce</h2>
         <p>Gramas</p>
-        <p>{{ batata_doce }}</p>
+
+        <p id="paragraph">{{ lista_de_dicionarios[2]['almoco batata doce']}}</p>
+        
         <button class="botoes" id="almoco">Gerar outro item</button>
     </div>
 </almoco>
@@ -79,7 +95,9 @@
         <img id="ic" src="../static/imagens/pao-de-forma.jpeg" alt="pao de forma">
         <h2>Pão de forma</h2>
         <p id="paragraph">Gramas</p>
-        <p id="paragraph">{{ pao_de_forma }}</p>
+
+        <p id="paragraph">{{ lista_de_dicionarios[3]['lanche tarde pao de forma']}}</p>
+        
         <button class="botoes">Gerar outro item</button>
     </div>
 
@@ -87,7 +105,9 @@
         <img id="ic" src="../static/imagens/leite-integral.jpeg" alt="leite integral">
         <h2>Leite Integral</h2>
         <p id="paragraph">Gramas</p>
-        <p id="paragraph">{{ leite_integral }}</p>
+
+        <p id="paragraph">{{ lista_de_dicionarios[3]['lanche tarde leite integral']}}</p>
+        
         <button class="botoes">Gerar outro item</button>
     </div>
 
@@ -95,7 +115,9 @@
         <img id="ic" src="../static/imagens/banana.jpeg" alt="banana">
         <h2>Banana</h2>
         <p id="paragraph">Gramas</p>
-        <p id="paragraph">{{ banana }}</p> 
+
+        <p id="paragraph">{{ lista_de_dicionarios[3]['lanche tarde banana']}}</p>
+         
         <button class="botoes" id="lanche-tarde">Gerar outro item</button>
     </div>
 </lanche_tarde>
@@ -106,7 +128,9 @@
         <img id="ic" src="../static/imagens/ovo.jpeg" alt="ovo">
         <h2>Ovo Frito</h2>
         <p id="jantar-paragraph">Gramas</p>
-        <p id="jantar-paragraph">{{ ovo_frito }}</p>
+
+        <p id="paragraph">{{ lista_de_dicionarios[4]['jantar ovo frito']}}</p>
+       
         <button class="botoes-jantar">Gerar outro item</button>
     </div>
 
@@ -114,7 +138,9 @@
         <img id="ic" src="../static/imagens/macarrao.jpg" alt="macarrao">
         <h2>Macarrão</h2>
         <p id="jantar-paragraph">Gramas</p>
-        <p id="jantar-paragraph">{{ macarrao }}</p>
+
+        <p id="paragraph">{{ lista_de_dicionarios[4]['jantar macarrao']}}</p>
+        
         <button class="botoes-jantar">Gerar outro item</button>
     </div>
 
@@ -122,7 +148,9 @@
         <img id="ic" src="../static/imagens/batata-doce.jpeg" alt="batata doce">
         <h2>Batata Doce</h2>
         <p id="jantar-paragraph">Gramas</p>
-        <p id="jantar-paragraph">{{ batata_doce }}</p>
+
+        <p id="paragraph">{{ lista_de_dicionarios[4]['jantar batata doce']}}</p>
+        
         <button class="botoes-jantar" id="jantar">Gerar outro item</button>
     </div>
 </jantar>
@@ -135,7 +163,9 @@
             var actual_id = this.id;
             let button = this;
 
-            fetch("/change_photo/" + actual_id)   
+            var aqui = "{{ total }}";
+
+            fetch("/change_photo/"+ actual_id + "/" + aqui) //+ total)   
             .then(response => response.json())  
             .then(data => {
                 
@@ -174,6 +204,7 @@
                 if (!itemExists) {
                     button.parentElement.querySelector('img').src = data.url;
                     button.parentElement.querySelector('h2').innerHTML = data.query; 
+                    button.parentElement.querySelector('#paragraph').innerHTML = data.att
                 } else {
                     alert('Item já existe. Tente novamente.'); 
                 }

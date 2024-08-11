@@ -32,12 +32,14 @@ def new(alimentos, total):
 
     dicionario = rt(almoco, calories)
 
+    #print (dicionario)
+
     return dicionario
 
 def rt(dictionary, calories):
     for key, value in dictionary.items():
      
-        new_value = (round(((calories / value[1]) * 100), 2))
+        new_value = (round(((calories / value[1]) * value[0]), 2))
 
         dictionary[key] = new_value
     return dictionary
@@ -46,7 +48,7 @@ def rt(dictionary, calories):
 #new(['arroz branco', 'feijao carioca', 'carne de vaca',
 #'batata doce'])
 
-
+new(['arroz branco', 'ovo frito', 'macarrao'], 2550)
 
     
 

@@ -238,6 +238,23 @@ Certo por enquanto é isso!
 
 
 
+Problema resolvido
+
+- Bom eu tinha que achar um jeito de fazer com que as chaves fornecidas para render_template da rota dieta não fossem repetidas. 
+Então a solução foi adicionar um prefixo a cada alimento. Por ex se um alimento se repete no breakfast e em algum lanche o prefixo
+impede a repetição. 
+ 
+  breakfast leite integral
+  lanche_tarde leite integral 
+
+  almoco  batata doce
+  jantar batata doce
+
+aqui cada chave com o nome de um alimento contendo quantas gramas são necessárias, tem um prefixo de qual refeição aquele alimento pertence
+que já contorna o problema em que mesmo que os alimentos se repitam, o cálculo das gramas de cada um é diferente em cada refeição. 
+
+Eu adicionei um comentário por enquanto em lab.py e o código explica como eu resolvi esse problema. 
+
 
 
 

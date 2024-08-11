@@ -4,7 +4,9 @@ import sqlite3
 from refeicoes import breakfast, lanche_manha, almoco, lanche_tarde, jantar
 from api import get_photos
 import random
-from new import new
+# from new import new
+from lab import lab
+from building import new_adp
 
 app = Flask(__name__)
 
@@ -40,57 +42,40 @@ def form():
 @app.route('/dieta/<total>', methods=['GET'])
 def dieta(total):
     total = float(total)
+    
+    # A escolha de alimentos base para o template tem como principal requisito evitar a repetição, ao mesmo tempo que escolhe os alimentos com maior densidade calórica para evitar uma refeição massiva com muitas gramas por alimento
+    
+    lista_de_dicionarios = lab(total)
 
-    breakfast_func = breakfast(total)
-    lanche_manha_func = lanche_manha(total)
-    almoco_func = almoco(total)
-    lanche_tarde_func = lanche_tarde(total)
-    jantar_func = jantar(total)
+    return render_template('copo.html', lista_de_dicionarios=lista_de_dicionarios, total=total)
 
-    pao_frances = breakfast_func['pao frances']
-    leite_integral = breakfast_func['leite integral']
-    banana = breakfast_func['banana']
+@app.route('/change_photo/<argument>/<total>', methods=['GET']) #<total>'
+def change_photo(argument, total): #total
 
-    amendoas = lanche_manha_func['amendoas']
-
-    arroz_branco = almoco_func['arroz branco']
-    feijao_carioca = almoco_func['feijao carioca']
-    carne_vaca = almoco_func['carne de vaca']
-    batata_doce = almoco_func['batata doce']
-
-    pao_de_forma = lanche_tarde_func['pao de forma']
-
-    ovo_frito = jantar_func['ovo frito']
-    macarrao = jantar_func['macarrao']
-
-    data = {
-        'pao_frances': pao_frances,
-        'leite_integral': leite_integral,
-        'banana': banana,
-        'amendoas': amendoas,
-        'arroz_branco': arroz_branco,
-        'feijao_carioca': feijao_carioca,
-        'carne_vaca': carne_vaca,
-        'batata_doce': batata_doce,
-        'pao_de_forma': pao_de_forma,
-        'ovo_frito': ovo_frito,
-        'macarrao': macarrao,
-        'total': format(total, '.2f')
-    }
-
-    return render_template('copo.html', **data)
-
-@app.route('/change_photo/<argument>', methods=['GET'])
-def change_photo(argument):
+    total = float(total)
 
     if argument == 'breakfast':
         lista = ['sweet potato', 'almonds'] 
+
+        lista_br = ['batata doce', 'amendoas']
 
         random_num = random.randint(0, 1)
 
         photo = get_photos(lista[random_num])
 
-        return jsonify({'url': photo, 'query': lista[random_num]})
+        # Nota essa parte de código se repete para todas as refeições nos ifs então a ideia é a mesma
+
+        # A ideia é que eu sei quantos alimentos tem em ada refeição, mas se no futuro eu for usar um método mais sofisticado ou melhor desenhado, a length seria com base em algo mais dinâmico, e baseado em algoritmo
+
+        debug = lista_br[random_num]
+
+        length = 3
+
+        print(debug)
+
+        att_grams_info = new_adp(debug, length, total)
+
+        return jsonify({'url': photo, 'query': lista[random_num], 'att': att_grams_info['alimento']}) #'att': att_grams_info}
 
     # Como aqui tem menos alimentos crie um algoritmo para selecionar os alimentos mais caloricos que estão dentro do escopo de lanche da manhã
     if argument == 'lanche-manha':
@@ -100,7 +85,7 @@ def change_photo(argument):
 
         photo = get_photos(lista[random_num])
 
-        return jsonify({'url':photo, 'query': lista[random_num]})
+        return jsonify({'url': photo, 'query': lista[random_num]})
         
     if argument == 'almoco':
         lista = ['pasta', 'eggs']
