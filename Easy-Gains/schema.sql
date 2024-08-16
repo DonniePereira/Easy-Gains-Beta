@@ -1,0 +1,1 @@
+CREATE TABLE alimentos (alimento TEXT, gramas INT, calorias INT, carboidratos FLOAT, proteinas FLOAT, gorduras FLOAT);

@@ -1,0 +1,10 @@
+CREATE TABLE alimentos (alimento TEXT, gramas INT, calorias INT, carboidratos FLOAT, proteinas FLOAT, gorduras FLOAT);
+
+Homens
+
+TMB=  88.362+(13.397×peso em kg)+(4.799×altura em cm)−(5.677×idade em anos)
+
+
+Mulheres
+
+TMB=447.593+(9.247×peso em kg)+(3.098×altura em cm)−(4.330×idade em anos)
